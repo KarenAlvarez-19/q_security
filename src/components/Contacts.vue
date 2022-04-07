@@ -18,27 +18,7 @@
   </div>
 </template>
 <script>
-const contacts = [ {
-  id: 1,
-  name: 'Ruddy Jedrzej',
-  email: 'rjedrzej0@discuz.net',
-  letter: 'R'
-}, {
-  id: 2,
-  name: 'Mallorie Alessandrini',
-  email: 'malessandrini1@marketwatch.com',
-  letter: 'M'
-}, {
-  id: 3,
-  name: 'Elisabetta Wicklen',
-  email: 'ewicklen2@microsoft.com',
-  letter: 'E'
-}, {
-  id: 4,
-  name: 'Seka Fawdrey',
-  email: 'sfawdrey3@wired.com',
-  letter: 'S'
-} ]
+import config from "../config.js"
 
 const offline = [ {
   id: 5,
@@ -53,10 +33,27 @@ const offline = [ {
 } ]
 
 export default {
-  setup () {
+  
+  data(){
     return {
-      contacts,
-      offline
+      contacts: [],
+    }
+  },
+  created(){
+    this.users();
+  },
+  methods:{
+    async users(){
+      let data = await config.get("/user");
+      let cont = data.data;
+      cont.forEach(this.setUsers)
+    },
+    setUsers(element){
+      this.contacts.push({
+        id: element.id,
+        name: element.nombre,
+        matricula: element.matricula
+      })
     }
   }
 }
