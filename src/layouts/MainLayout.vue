@@ -24,10 +24,10 @@
         <q-item-label
           header
         >
-          Contactos
+          Contacts
         </q-item-label>
 
-        <Contacts /> 
+        <Contacts />
       </q-list>
     </q-drawer>
 
@@ -90,7 +90,7 @@ export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    Contacts 
+    Contacts
   },
 
   setup () {

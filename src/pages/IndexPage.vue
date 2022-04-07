@@ -8,25 +8,17 @@
         sent
       />
       <q-chat-message
+      bg-color="cyan-5"
         name="Jane"
         :text="['doing fine, how r you?']"
       />
     </div>
   </div>
   <q-footer elevated class="bg-white q-pa-md">
-    <q-input filled bottom-slots v-model="text" label="Label" counter maxlength="50" :dense="dense">
-        <template v-slot:before>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/img/avatar5.jpg">
-          </q-avatar>
-        </template>
+    <q-input filled rounded bottom-slots v-model="text" label="Type a message" counter maxlength="50" :dense="dense">
 
         <template v-slot:append>
           <q-icon v-if="text !== ''" name="close" @click="text = ''" class="cursor-pointer" />
-        </template>
-
-        <template v-slot:hint>
-          Field hint
         </template>
 
         <template v-slot:after>
