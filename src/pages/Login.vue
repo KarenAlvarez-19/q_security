@@ -43,6 +43,7 @@ export default {
         );
         if (data.data) {
           localStorage.setItem("userPassword", data.data.password);
+          localStorage.setItem("userName", data.data.nombre);
           Notify.create({
             type: "positive",
             message: "Si existe",

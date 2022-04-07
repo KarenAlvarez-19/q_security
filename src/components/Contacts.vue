@@ -33,7 +33,7 @@ const offline = [ {
 } ]
 
 export default {
-  
+
   data(){
     return {
       contacts: [],
@@ -52,7 +52,8 @@ export default {
       this.contacts.push({
         id: element.id,
         name: element.nombre,
-        matricula: element.matricula
+        matricula: element.matricula,
+        letter: String(element.nombre).charAt(0).toUpperCase()
       })
     }
   }
