@@ -23,7 +23,7 @@
 <script>
 import { ref } from 'vue';
 import config from "../config.js";
-import {Notify} from "quasar";
+import { Notify } from "quasar";
 export default {
   data () {
     return {
@@ -35,20 +35,24 @@ export default {
   },
   methods:{
     async login(){
-      let formData = new FormData;
-      formData.append("matricula", this.matricula);
-      formData.append("password", this.pass);
+      let formData ={matricula: this.matricula, password: this.pass}
+      
       try {
-        let data = await config.get("/auth/login", formData);
+        let data = await config.get(`/auth/login?matricula=${this.matricula}&password=${this.pass}`);
         if(data.data){
+          localStorage.setItem("userPassword", data.data.password);
           Notify.create({
             type:"positive", 
             message:"Si existe",
           })
+          this.$router.push("/") 
         }
       } catch (error) {
         console.error(error)
-      
+      Notify.create({
+            type:"negative", 
+            message:"No existe",
+          })
       }
     }
   }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Notify } from "quasar";
 
-const api = "192.168.0.104:8080"; //referencia al back 
+const api = "http://192.168.0.104:8080"; //referencia al back 
 
 export default {
   get(url, params) {
